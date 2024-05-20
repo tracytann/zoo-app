@@ -1,0 +1,29 @@
+<%= link_to 'Back', zoos_path(), class: 'btn btn-primary m-3'%>
+<div class="m-3">
+  <table id="animals-table" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th> Image</th>
+        <th> Name</th>
+        <th> Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @animals.each do |animal| %>
+        <tr>
+          <td>
+            <%= image_tag(animal.image.url(:thumb)) if animal.image %>
+          </td>
+          <td><%=animal.name%></td>
+          <td><%=animal.description%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div>
+
+<p class="text-center">
+  <iframe width="700" height="400" frameborder="0" src="<%= google_map(@zoo.address, @zoo.city, @zoo.state, @zoo.zip) %>"
+   allowfullscreen>
+  </iframe>
+</p>
